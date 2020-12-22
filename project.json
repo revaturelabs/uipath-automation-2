@@ -3,6 +3,7 @@
   "description": "Process to automate the gathering of Revature associate information and creating a GitHub organization for said associates.",
   "main": "Main.xaml",
   "dependencies": {
+    "Revature_GitHub_ActivityLibrary": "[0.1.0-alpha]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.GSuite.Activities": "[1.8.0]",
