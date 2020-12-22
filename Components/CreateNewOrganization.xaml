@@ -1,11 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CreateNewOrganization" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:ro="clr-namespace:Revature_GitHub_ActivityLibrary.Organizations;assembly=Revature_GitHub_ActivityLibrary" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateNewOrganization" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ro="clr-namespace:Revature_GitHub_ActivityLibrary.Organizations;assembly=Revature_GitHub_ActivityLibrary" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Credential" Type="InArgument(x:String)" />
     <x:Property Name="in_ContactEmail" Type="InArgument(x:String)" />
     <x:Property Name="in_OrganizationName" Type="InArgument(x:String)" />
     <x:Property Name="in_BusinessName" Type="InArgument(x:String)" />
     <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:CreateNewOrganization.in_ContactEmail>
     <InArgument x:TypeArguments="x:String" />
@@ -19,10 +18,7 @@
   <this:CreateNewOrganization.in_Browser>
     <InArgument x:TypeArguments="ui:UiElement" />
   </this:CreateNewOrganization.in_Browser>
-  <this:CreateNewOrganization.in_Config>
-    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
-  </this:CreateNewOrganization.in_Config>
-  <sap:VirtualizedContainerService.HintSize>1697,1055</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1697,1056</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -57,7 +53,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="72">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,9 +90,10 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence creates a new Github organization. It will open its own browser and log the user into Github using the credential passed in. Then, it will navigate to the necessary pages and create the new organization with the information passed in as arguments.&#xA;&#xA;Preconditions: N/A" DisplayName="Create New Github Organization" sap:VirtualizedContainerService.HintSize="476,950" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence creates a new Github organization. It will open its own browser and log the user into Github using the credential passed in. Then, it will navigate to the necessary pages and create the new organization with the information passed in as arguments.&#xA;&#xA;Preconditions: N/A" DisplayName="Create New Github Organization" sap:VirtualizedContainerService.HintSize="476,951" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="Password" />
@@ -115,13 +112,13 @@
         <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">[Password]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Open new Edge Browser" sap:VirtualizedContainerService.HintSize="434,604" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OutUiElement="[Browser]" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Open new Edge Browser" sap:VirtualizedContainerService.HintSize="434,605" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OutUiElement="[Browser]" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Create new Org" sap:VirtualizedContainerService.HintSize="376,388" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do - Create new Org" sap:VirtualizedContainerService.HintSize="376,389" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="IsLoggedIn" />
             </Sequence.Variables>
@@ -132,12 +129,8 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GitHub_Login workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\GitHub_Login.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Application">
-                  <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="Browser" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Credential">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Credential" />
-                </InArgument>
+                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Application">[Browser]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Credential]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <uix:NGoToUrl DisplayName="Go To URL - Needs to change to new activity" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://github.com/organizations/plan" />
