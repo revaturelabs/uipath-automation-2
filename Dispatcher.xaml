@@ -90,6 +90,7 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Revature_GitHub_ActivityLibrary</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Retrieves transaction items by putting them into the out_TransactionData data table as DataRows. Then Creates new Github Organization." DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="684,2241" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -129,19 +130,35 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Edge_Download_FormResponseCSV workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\Edge_Download_FormResponseCSV.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[Browser]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_FormURL">[FormURL]</InArgument>
+                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">
+                  <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="Browser" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_FormURL">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FormURL" />
+                </InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_FormID" />
-                <OutArgument x:TypeArguments="x:String" x:Key="out_CSVPath">[WorkbookPath]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_CSVPath">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="WorkbookPath" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateNewOrganization workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\CreateNewOrganization.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Config("GithubCredential").ToString]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_ContactEmail">[ContactEmail]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_OrganizationName">[out_OrganizationName]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_BusinessName">[BuseinessName]</InArgument>
-                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[Browser]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Credential">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;GithubCredential&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ContactEmail">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ContactEmail" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_OrganizationName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_OrganizationName" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_BusinessName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="BuseinessName" />
+                </InArgument>
+                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">
+                  <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="Browser" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>
