@@ -17,7 +17,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1697,2930</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1075.2,2744</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edge_Download_FormResponseCSV_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -95,7 +95,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Edge_Download_FormResponseCSV" sap:VirtualizedContainerService.HintSize="605,2825" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Edge_Download_FormResponseCSV" sap:VirtualizedContainerService.HintSize="602.4,2639.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FormURL" />
       <Variable x:TypeArguments="x:String" Name="FormTitle" />
@@ -105,7 +105,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Get URL" sap:VirtualizedContainerService.HintSize="563,1039" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Get URL" sap:VirtualizedContainerService.HintSize="560.8,844.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="FormID" />
       </Sequence.Variables>
@@ -115,50 +115,32 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[in_FormURL IsNot Nothing]" sap:VirtualizedContainerService.HintSize="521,599" sap2010:WorkflowViewState.IdRef="If_3">
+      <If Condition="[in_FormURL IsNot Nothing]" sap:VirtualizedContainerService.HintSize="519.2,402.4" sap2010:WorkflowViewState.IdRef="If_3">
         <If.Then>
-          <Sequence DisplayName="Filter URL for ID" sap:VirtualizedContainerService.HintSize="376,451" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Filter URL for ID" sap:VirtualizedContainerService.HintSize="375.2,252.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="GFormsBaseURL" />
               <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matches" />
-              <Variable x:TypeArguments="x:String" Name="CapturedText" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <ui:Matches BuilderPattern="[-\w]{9,40}" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_FormURL]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;[-\\w]&quot;,&quot;QuantifierFirstValue&quot;:&quot;9&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;40&quot;}]" Pattern="[-\w]{9,40}" RegexOption="None" Result="[matches]" />
+            <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[GFormsBaseURL]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">["google.com/forms/d/"]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <ui:Matches BuilderPattern="google.com/forms/d/(\w*)" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_FormURL]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;google.com\/forms\/d\/&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;ANYWCHAR&quot;,&quot;OperationName&quot;:&quot;Any word character&quot;,&quot;OperationValue&quot;:&quot;\\w&quot;,&quot;QuantifierFirstValue&quot;:&quot;*&quot;,&quot;QuantifierID&quot;:&quot;ANY&quot;,&quot;QuantifierName&quot;:&quot;Any (0 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[GFormsBaseURL+&quot;(\w*)&quot;]" RegexOption="None" Result="[matches]" />
-            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[CapturedText]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[FormID]</OutArgument>
               </Assign.To>
               <Assign.Value>
                 <InArgument x:TypeArguments="x:String">[matches.First().Value]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[FormID]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[CapturedText.Replace(GFormsBaseURL,"")]</InArgument>
-              </Assign.Value>
-            </Assign>
           </Sequence>
         </If.Then>
       </If>
-      <If Condition="[in_FormID IsNot Nothing]" sap:VirtualizedContainerService.HintSize="521,208" sap2010:WorkflowViewState.IdRef="If_4">
+      <If Condition="[in_FormID IsNot Nothing]" sap:VirtualizedContainerService.HintSize="519.2,209.6" sap2010:WorkflowViewState.IdRef="If_4">
         <If.Then>
-          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[FormID]</OutArgument>
             </Assign.To>
@@ -168,7 +150,7 @@
           </Assign>
         </If.Then>
       </If>
-      <Assign sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[FormURL]</OutArgument>
         </Assign.To>
@@ -177,13 +159,13 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Edge: T-Shirt Sign Up - Google Forms" sap:VirtualizedContainerService.HintSize="563,1654" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OpenMode="Never" Version="V1">
+    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Edge: T-Shirt Sign Up - Google Forms" sap:VirtualizedContainerService.HintSize="560.8,1661.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OpenMode="Never" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1438" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="485.6,1444.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="si:FileInfo" Name="DownloadedCSV" />
               <Variable x:TypeArguments="si:DirectoryInfo" Name="DestFolder" />
@@ -193,17 +175,17 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="444,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[FormURL]" />
-            <ui:GetLastDownloadedFile Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+&quot;\Downloads&quot;]" File="[DownloadedCSV]" sap:VirtualizedContainerService.HintSize="444,877" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1">
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="444,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[FormURL]" />
+            <ui:GetLastDownloadedFile Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+&quot;\Downloads&quot;]" File="[DownloadedCSV]" sap:VirtualizedContainerService.HintSize="444,882.4" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1">
               <ui:GetLastDownloadedFile.Body>
                 <ActivityAction>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,670" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,672.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <uix:NGetText DisplayName="Get Text - Form Title" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_1">
+                    <uix:NGetText DisplayName="Get Text - Form Title" sap:VirtualizedContainerService.HintSize="334.4,167.2" sap2010:WorkflowViewState.IdRef="NGetText_1">
                       <uix:NGetText.Target>
                         <uix:TargetAnchorable BrowserURL="https://docs.google.com/forms/d/1SPEkTbwUEb7CYeT03syKdYoQHoq7faA3ucXWBHe1xWI/edit#responses" DesignTimeRectangle="104, 124, 161, 36" ElementType="InputBox" FriendlyName="'T-Shirt Sign Up'" FullSelectorArgument="&lt;webctrl idx='1' tag='INPUT' /&gt;" FuzzyAccuracy="0.7" FuzzySelectorArgument="&lt;webctrl type='text' tag='INPUT' aaname='' /&gt;" ImageBase64="" InformativeScreenshot="fea0388f36e87a1a7a5bf84f7cccef62.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='T-Shirt Sign Up - Google Forms' /&gt;" SearchSteps="FuzzySelector" Text="T-Shirt Sign Up" TextMethod="AttributeText" TextSelector="&lt;webctrl type='text' tag='INPUT' /&gt;">
                           <uix:TargetAnchorable.Anchors>
