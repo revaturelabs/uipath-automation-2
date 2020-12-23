@@ -111,10 +111,24 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetForm workflow" sap:VirtualizedContainerService.HintSize="514,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\GetForm.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_FormURL">[FormURL]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationName">[out_OrganizationName]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationBusiness">[BuseinessName]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_ContactEmail">[ContactEmail]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FormURL">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="FormURL" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_OrganizationName" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationBusiness">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="BuseinessName" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ContactEmail">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ContactEmail" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LocalPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C:\Users\&quot;+ Environment.UserName + in_Config(&quot;InputFileRelativePath&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Open new Edge Browser" sap:VirtualizedContainerService.HintSize="514,1224" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" OpenMode="Always" OutUiElement="[Browser]" Version="V1">
@@ -132,8 +146,12 @@
             <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="438,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://www.google.com/" />
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Google_SignIn workflow" sap:VirtualizedContainerService.HintSize="438,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Components\Google\Google_SignIn.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Config("GoogleCredential").ToString]</InArgument>
-                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[Browser]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Credential">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;GoogleCredential&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">
+                  <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="Browser" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,339" sap2010:WorkflowViewState.IdRef="TryCatch_2">
