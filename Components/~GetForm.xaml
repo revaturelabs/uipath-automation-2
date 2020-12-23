@@ -11,7 +11,7 @@
   <sap:VirtualizedContainerService.HintSize>1025.6,1328</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetForm_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="35">
+    <scg:List x:TypeArguments="x:String" Capacity="70">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -47,6 +47,7 @@
       <x:String>UiPath.Web.Activities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -98,7 +99,7 @@
     <ui:PathExists DisplayName="Path Exists - Local path wilt GitHub Information" Exists="[isValidPath]" sap:VirtualizedContainerService.HintSize="994.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[LocalPath]" PathType="File" />
     <If Condition="[IsValidPath]" DisplayName="If - local file path for GitHub create organization details is valid" sap:VirtualizedContainerService.HintSize="994.4,836" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="425.6,608" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Sequence - Get Github details from file" sap:VirtualizedContainerService.HintSize="425.6,608" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,7 +137,7 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:LogMessage DisplayName="Log Message - Data from file read in" sap:VirtualizedContainerService.HintSize="384,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;GitHub organization informaiton attained from file&quot;]" />
+          <ui:LogMessage DisplayName="Log Message - GitHub Org details complated" sap:VirtualizedContainerService.HintSize="384,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;GitHub organization information attained from file&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
