@@ -79,7 +79,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Extracting the Google Forms link&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser that is already open" sap:VirtualizedContainerService.HintSize="514,1354" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser that is already open" sap:VirtualizedContainerService.HintSize="514,1354" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OpenMode="Never" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
