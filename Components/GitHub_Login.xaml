@@ -1,15 +1,15 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="GitHub_Login" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:ra="clr-namespace:Revature_GitHub_ActivityLibrary.Authentication;assembly=Revature_GitHub_ActivityLibrary" xmlns:rn="clr-namespace:Revature_GitHub_ActivityLibrary.Navigation;assembly=Revature_GitHub_ActivityLibrary" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Application" Type="InArgument(ui:UiElement)" />
-    <x:Property Name="in_Credential" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The login credentials for the user's GitHub account." Name="in_Credential" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The browser window used to log into GitHub." Name="in_Browser" Type="InArgument(ui:UiElement)" />
   </x:Members>
-  <this:GitHub_Login.in_Application>
+  <this:GitHub_Login.in_Browser>
     <InArgument x:TypeArguments="ui:UiElement" />
-  </this:GitHub_Login.in_Application>
+  </this:GitHub_Login.in_Browser>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1108.8,1298</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1685,1283</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GitHub_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -91,12 +91,12 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow logs into GitHub by getting credential information, attempting to log into GitHub with the library activity, and prompting the user to handle 2FA if the warning appears." DisplayName="GitHub_Login" sap:VirtualizedContainerService.HintSize="526,1192.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow logs into GitHub by getting credential information, attempting to log into GitHub with the library activity, and prompting the user to handle 2FA if the warning appears." DisplayName="GitHub_Login" sap:VirtualizedContainerService.HintSize="526,1178" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="ss:SecureString" Name="Pwd" />
-      <Variable x:TypeArguments="x:String" Name="Username" />
-      <Variable x:TypeArguments="x:Boolean" Name="Did2FAAppear" />
-      <Variable x:TypeArguments="x:Boolean" Name="IsLoggedIn" />
+      <Variable x:TypeArguments="ss:SecureString" sap2010:Annotation.AnnotationText="The password obtained form the given credentials." Name="Pwd" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The username obtained form the given credentials." Name="Username" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the 2FA prompt appears." Name="Did2FAAppear" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the user is already logged in." Name="IsLoggedIn" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -104,31 +104,31 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,93.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Attempting to authenticate with GitHub...&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="484,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Attempting to authenticate with GitHub...&quot;]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[Username]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Credential]</InArgument>
         <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">[Pwd]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <rn:GitHub_Web_NavigateTo_HomePage sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_NavigateTo_HomePage_1" in_Browser="[in_Application]" />
-    <ra:GitHub_Web_CheckIfLoggedIn sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_CheckIfLoggedIn_1" in_Browser="[in_Application]" out_IsLoggedIn="[IsLoggedIn]" />
-    <If Condition="[IsLoggedIn]" DisplayName="If - User Is Logged In, Log Them Out" sap:VirtualizedContainerService.HintSize="484,210" sap2010:WorkflowViewState.IdRef="If_2">
+    <rn:GitHub_Web_NavigateTo_HomePage sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_NavigateTo_HomePage_1" in_Browser="[in_Browser]" />
+    <ra:GitHub_Web_CheckIfLoggedIn sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_CheckIfLoggedIn_1" in_Browser="[in_Browser]" out_IsLoggedIn="[IsLoggedIn]" />
+    <If Condition="[IsLoggedIn]" DisplayName="If - User Is Logged In, Log Them Out" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <ra:GitHub_Web_Logout sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_Logout_1" in_Browser="[in_Application]" />
+        <ra:GitHub_Web_Logout sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_Logout_1" in_Browser="[in_Browser]" />
       </If.Then>
     </If>
-    <rn:GitHub_Web_NavigateTo_Login sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_NavigateTo_Login_1" in_Browser="[in_Application]" />
-    <ra:GitHub_Web_Login sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_Login_1" in_Browser="[in_Application]" in_Password="[Pwd]" in_Username="[Username]" out_2FADidAppear="[Did2FAAppear]" />
-    <If sap2010:Annotation.AnnotationText="Displays a message box to alert the user to input their 2FA code and then close the message box to continue" Condition="[Did2FAAppear]" DisplayName="If - Two Factory Authentication Is Enabled" sap:VirtualizedContainerService.HintSize="484,254.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <rn:GitHub_Web_NavigateTo_Login sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_NavigateTo_Login_1" in_Browser="[in_Browser]" />
+    <ra:GitHub_Web_Login sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="GitHub_Web_Login_1" in_Browser="[in_Browser]" in_Password="[Pwd]" in_Username="[Username]" out_2FADidAppear="[Did2FAAppear]" />
+    <If sap2010:Annotation.AnnotationText="Displays a message box to alert the user to input their 2FA code and then close the message box to continue" Condition="[Did2FAAppear]" DisplayName="If - Two Factory Authentication Is Enabled" sap:VirtualizedContainerService.HintSize="484,250" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59.2" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;2FA prompt appeared. Insert code, and click ok on this box only after you've successfully authenticated.&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;2FA prompt appeared. Insert code, and click ok on this box only after you've successfully authenticated.&quot;]" />
       </If.Then>
     </If>
   </Sequence>

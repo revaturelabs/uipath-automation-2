@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Google_Check2FA" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
+    <x:Property sap2010:Annotation.AnnotationText="The browser used to throughout the application." Name="in_Browser" Type="InArgument(ui:UiElement)" />
   </x:Members>
   <this:Google_Check2FA.in_Browser>
     <InArgument x:TypeArguments="ui:UiElement" />
@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1685,899</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1685,939</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Google_Check2FA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -64,12 +64,22 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Google_Check2FA" sap:VirtualizedContainerService.HintSize="690,834" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="Is2FA" />
-      <Variable x:TypeArguments="x:Boolean" Name="IsLoggedIn" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the 2FA popup appears." Name="Is2FA" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the user is already logged in" Name="IsLoggedIn" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -111,20 +121,21 @@
               <av:PointCollection x:Key="ConnectorLocation">290,323.6 289.8,323.6 289.8,346.4</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="960,1118" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Sign in - Google Accounts" sap:VirtualizedContainerService.HintSize="918,828.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" Version="V1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="918,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Initializing checking for 2FA workflow&quot;]" />
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Sign in - Google Accounts" sap:VirtualizedContainerService.HintSize="918,823" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" Version="V1">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Check for popups" sap:VirtualizedContainerService.HintSize="884,611.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Check for popups" sap:VirtualizedContainerService.HintSize="884,607" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="TwoStepPopupExists" />
                       <Variable x:TypeArguments="x:Boolean" Name="PhoneNotificationExists" />
@@ -134,13 +145,13 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Parallel sap2010:Annotation.AnnotationText="Parallel can be used to check/search for elements, but absolutely should not be used for UI Interaction (Clicks, Typing, etc)." DisplayName="Parallel - Popup checks" sap:VirtualizedContainerService.HintSize="842,265.6" sap2010:WorkflowViewState.IdRef="Parallel_1">
+                    <Parallel sap2010:Annotation.AnnotationText="Parallel can be used to check/search for elements, but absolutely should not be used for UI Interaction (Clicks, Typing, etc)." DisplayName="Parallel - Popup checks" sap:VirtualizedContainerService.HintSize="842,263" sap2010:WorkflowViewState.IdRef="Parallel_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2 Step popup" EnableIfExists="False" EnableIfNotExists="False" Exists="[TwoStepPopupExists]" sap:VirtualizedContainerService.HintSize="334,188.4" sap2010:WorkflowViewState.IdRef="NCheckState_1">
+                      <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2 Step popup" EnableIfExists="False" EnableIfNotExists="False" Exists="[TwoStepPopupExists]" sap:VirtualizedContainerService.HintSize="334,186" sap2010:WorkflowViewState.IdRef="NCheckState_1">
                         <uix:NCheckState.IfExists>
                           <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
                             <sap:WorkflowViewStateService.ViewState>
@@ -174,7 +185,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </uix:NCheckState>
-                      <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2FA phone notification" EnableIfExists="False" EnableIfNotExists="False" Exists="[PhoneNotificationExists]" sap:VirtualizedContainerService.HintSize="334,188.4" sap2010:WorkflowViewState.IdRef="NCheckState_4">
+                      <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2FA phone notification" EnableIfExists="False" EnableIfNotExists="False" Exists="[PhoneNotificationExists]" sap:VirtualizedContainerService.HintSize="334,186" sap2010:WorkflowViewState.IdRef="NCheckState_4">
                         <uix:NCheckState.IfExists>
                           <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <sap:WorkflowViewStateService.ViewState>
@@ -198,9 +209,9 @@
                         </uix:NCheckState.Target>
                       </uix:NCheckState>
                     </Parallel>
-                    <If Condition="[TwoStepPopupExists OrElse PhoneNotificationExists]" DisplayName="If One of the popups appeared" sap:VirtualizedContainerService.HintSize="842,212" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[TwoStepPopupExists OrElse PhoneNotificationExists]" DisplayName="If One of the popups appeared" sap:VirtualizedContainerService.HintSize="842,210" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Then>
-                        <Assign sap:VirtualizedContainerService.HintSize="262.4,60.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_1">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[Is2FA]</OutArgument>
                           </Assign.To>
@@ -210,7 +221,7 @@
                         </Assign>
                       </If.Then>
                       <If.Else>
-                        <Assign sap:VirtualizedContainerService.HintSize="262.4,60.8" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_2">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[Is2FA]</OutArgument>
                           </Assign.To>
@@ -249,7 +260,7 @@
                       <av:Size x:Key="ShapeSize">200,123</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Log message and finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,140" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Log message and finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,123" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
