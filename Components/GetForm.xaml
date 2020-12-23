@@ -1,10 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetForm" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetForm" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="The URL of the google form used to collect GitHub usernames. Does not matter if it is from the Questions or Responses panel." Name="out_FormURL" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The name of the organization you wish to add members to." Name="out_OrganizationName" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The name of the business or institution for the newly created organization." Name="out_OrganizationBusiness" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The email of the contact person for the newly created GitHub organization." Name="out_ContactEmail" Type="OutArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="The local path of the Batch Organization file used to read in all information to complete the process.&#xD;&#xA;" Name="in_LocalPath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The local path of the Batch Organization file used to read in all information to complete the process.&#xA;" Name="in_LocalPath" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The config file used throughout the application." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
@@ -82,11 +82,9 @@
   <Sequence sap2010:Annotation.AnnotationText="This sequence asks the user for the GitHub organzation name and the Google Form URL with the list of GitHub usernames if information not contained in local path." DisplayName="GetForm URL + GitHub Org. Name" sap:VirtualizedContainerService.HintSize="1039,1211" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the form was dismissed without submission." Name="Dismissed" />
-      <Variable x:TypeArguments="x:String" Name="GitHubInfoText" />
-      <Variable x:TypeArguments="njl:JObject" Name="JSONGitHubInfoObj" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtForm" />
-      <Variable x:TypeArguments="x:Boolean" Name="IsValidPath" />
-      <Variable x:TypeArguments="x:String" Name="variable1" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The JSON string that contains the necessary information to complete the process unattended." Name="GitHubInfoText" />
+      <Variable x:TypeArguments="njl:JObject" sap2010:Annotation.AnnotationText="The JSON Objectthat contains the necessary information to complete the process unattended." Name="JSONGitHubInfoObj" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the a file is found at the specific file address given by in_LocalPath." Name="IsValidPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
