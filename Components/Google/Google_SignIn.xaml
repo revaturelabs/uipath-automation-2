@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1064,1310.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1685,1311</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GoogleFlowchart_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -80,7 +80,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Google Sign In Workflow" sap:VirtualizedContainerService.HintSize="1074,1205.6" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="Google Sign In Workflow" sap:VirtualizedContainerService.HintSize="1074,1206" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsLoggedIn" />
       <Variable x:TypeArguments="x:Boolean" Name="IsFailedSignIn" />
@@ -93,8 +93,8 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,136.9 450,136.9</av:PointCollection>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,130 450,130</av:PointCollection>
         <x:Double x:Key="Width">1040</x:Double>
         <x:Double x:Key="Height">1169.8</x:Double>
       </scg:Dictionary>
@@ -106,11 +106,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">450,8.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,261.2</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">550,265.3 550,286.5 550.2,286.5</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,243</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">550,251.5 550,286.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="This sequence gets the user's credentials from Orchestrator or Windows Credential Manager.&#xA;It also checks to see if the user is logged in.&#xA;&#xA;Output: &#xA;IsLoggedIn: boolean variables that is true is profile image is found and user is logged in." DisplayName="Get Credentials" sap:VirtualizedContainerService.HintSize="200,261.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence sap2010:Annotation.AnnotationText="This sequence gets the user's credentials from Orchestrator or Windows Credential Manager.&#xA;It also checks to see if the user is logged in.&#xA;&#xA;Output: &#xA;IsLoggedIn: boolean variables that is true is profile image is found and user is logged in." DisplayName="Get Credentials" sap:VirtualizedContainerService.HintSize="200,243" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -175,14 +175,14 @@
         </uix:NApplicationCard>
       </Sequence>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID1" Condition="[IsLoggedIn]" DisplayName="Signed in?" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+        <FlowDecision x:Name="__ReferenceID1" Condition="[IsLoggedIn]" DisplayName="Signed in?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <av:Point x:Key="ShapeLocation">515,286.5</av:Point>
-              <av:Size x:Key="ShapeSize">70,87.2</av:Size>
+              <av:Size x:Key="ShapeSize">70,87</av:Size>
               <av:PointCollection x:Key="TrueConnector">515,330 485,330 485,271 260,271 260,301</av:PointCollection>
-              <av:PointCollection x:Key="FalseConnector">585.4,330.1 615.4,330.1 615.4,375.4 740,375.4</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">585,330 615,330 615,370 740,370</av:PointCollection>
               <x:String x:Key="TrueLabel">Signed In</x:String>
               <x:String x:Key="FalseLabel">Signed Out</x:String>
             </scg:Dictionary>
@@ -192,11 +192,11 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">160,301</av:Point>
-                  <av:Size x:Key="ShapeSize">200,162.8</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">360,381.4 390,381.4 390,375.4 740,375.4</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">200,138</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">360,370 390,370 390,271 710,271 710,370 740,370</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If the user is already signed in, it should sign out the current user and sign in the new one.&#xA;" DisplayName="User Signed In" sap:VirtualizedContainerService.HintSize="200,162.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence sap2010:Annotation.AnnotationText="If the user is already signed in, it should sign out the current user and sign in the new one.&#xA;" DisplayName="User Signed In" sap:VirtualizedContainerService.HintSize="200,138" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -215,11 +215,11 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">740,271</av:Point>
-                      <av:Size x:Key="ShapeSize">200,212</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">840,479.8 840,509.8 500.1,509.8 500.1,576.5</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">200,198</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">840,469 840,499 500.25,499 500.25,576.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence sap2010:Annotation.AnnotationText="This sequence signs the user in and checks for failed sign in.&#xA;&#xA;Output:&#xA;IsFailedSignIn: boolean variable that is true if the failed sign in text is found." DisplayName="Sign In Sequence" sap:VirtualizedContainerService.HintSize="549.6,2508.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence sap2010:Annotation.AnnotationText="This sequence signs the user in and checks for failed sign in.&#xA;&#xA;Output:&#xA;IsFailedSignIn: boolean variable that is true if the failed sign in text is found." DisplayName="Sign In Sequence" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -334,12 +334,12 @@
                     </uix:NApplicationCard>
                   </Sequence>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID3" Condition="[IsFailedSignIn]" DisplayName="Failed Sign in?" sap:VirtualizedContainerService.HintSize="80.8,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                    <FlowDecision x:Name="__ReferenceID3" Condition="[IsFailedSignIn]" DisplayName="Failed Sign in?" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <av:Point x:Key="ShapeLocation">439.5,576.5</av:Point>
-                          <av:Size x:Key="ShapeSize">80.8,87.2</av:Size>
+                          <av:Size x:Key="ShapeSize">81,87</av:Size>
                           <x:String x:Key="TrueLabel">Failed</x:String>
                           <x:String x:Key="FalseLabel">Success</x:String>
                           <av:PointCollection x:Key="TrueConnector">439.5,620 180,620 180,631</av:PointCollection>
@@ -351,10 +351,10 @@
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">80,631</av:Point>
-                              <av:Size x:Key="ShapeSize">200,144.8</av:Size>
+                              <av:Size x:Key="ShapeSize">200,138</av:Size>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence sap2010:Annotation.AnnotationText="If user fails to sign in, this throws an Application Exception indicating the incorrect credentials." DisplayName="Failed Sign in" sap:VirtualizedContainerService.HintSize="200,144.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <Sequence sap2010:Annotation.AnnotationText="If user fails to sign in, this throws an Application Exception indicating the incorrect credentials." DisplayName="Failed Sign in" sap:VirtualizedContainerService.HintSize="200,138" sap2010:WorkflowViewState.IdRef="Sequence_17">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -370,13 +370,15 @@
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">630,593.6</av:Point>
-                              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">730,646.4 730,695.6</av:PointCollection>
+                              <av:Size x:Key="ShapeSize">200,51</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">730,644.6 730,695.6</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Google\Google_Check2FA.xaml">
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Google\Google_Check2FA.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                              <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">
+                                <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="Browser" />
+                              </InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -389,10 +391,10 @@
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">630,695.6</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                  <av:Size x:Key="ShapeSize">200,66</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Check if Logged in" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                              <Sequence DisplayName="Check if Logged in" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_44">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>

@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>724.8,938.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1685,899</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Google_Check2FA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -43,7 +43,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -63,9 +63,10 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Google_Check2FA" sap:VirtualizedContainerService.HintSize="690,833.6" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="Google_Check2FA" sap:VirtualizedContainerService.HintSize="690,834" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="Is2FA" />
       <Variable x:TypeArguments="x:Boolean" Name="IsLoggedIn" />
@@ -74,7 +75,7 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
         <x:Double x:Key="Width">656</x:Double>
         <x:Double x:Key="Height">797.6</x:Double>
         <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 290,107.7 290,125.6</av:PointCollection>
@@ -87,11 +88,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">120,513.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,195.6</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">120,611.4 90,611.4 90,231.6 190,231.6</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,183</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">120,605.1 90,605.1 90,224.6 190,224.6</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="This sequence handles 2FA. It opens a message box with instructions for the user to  finish signing in with the correct 2FA method, then press Ok to continue program execution. " DisplayName="Handle 2FA" sap:VirtualizedContainerService.HintSize="200,195.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence sap2010:Annotation.AnnotationText="This sequence handles 2FA. It opens a message box with instructions for the user to  finish signing in with the correct 2FA method, then press Ok to continue program execution. " DisplayName="Handle 2FA" sap:VirtualizedContainerService.HintSize="200,183" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -106,11 +107,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">190,125.6</av:Point>
-              <av:Size x:Key="ShapeSize">200,212</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">290,337.6 289.8,337.6 289.8,346.4</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,198</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">290,323.6 289.8,323.6 289.8,346.4</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="960,998" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,16 +229,16 @@
             </uix:NApplicationCard>
           </Sequence>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID2" Condition="[Is2FA]" DisplayName="2FA?" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+            <FlowDecision x:Name="__ReferenceID2" Condition="[Is2FA]" DisplayName="2FA?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">254.8,346.4</av:Point>
-                  <av:Size x:Key="ShapeSize">70,87.2</av:Size>
+                  <av:Size x:Key="ShapeSize">70,87</av:Size>
                   <x:String x:Key="TrueLabel">Has 2FA</x:String>
                   <x:String x:Key="FalseLabel">No 2FA</x:String>
                   <av:PointCollection x:Key="TrueConnector">254.8,390 220,390 220,513.6</av:PointCollection>
-                  <av:PointCollection x:Key="FalseConnector">325.2,390 355.2,390 355.2,580 400,580</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">324.8,389.9 354.8,389.9 354.8,577.1 400,577.1</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.False>
@@ -245,17 +246,16 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">400,515.6</av:Point>
-                      <av:Size x:Key="ShapeSize">200,130</av:Size>
+                      <av:Size x:Key="ShapeSize">200,123</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Log message and finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,130" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Log message and finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,140" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Successfully signed user in&quot;]" />
                   </Sequence>
                 </FlowStep>
               </FlowDecision.False>
