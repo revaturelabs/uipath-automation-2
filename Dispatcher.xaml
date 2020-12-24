@@ -2,12 +2,12 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction items retrieved and put into DataRows" Name="out_TransactionData" Type="OutArgument(sd:DataTable)" />
-    <x:Property sap2010:Annotation.AnnotationText="The name of the GitHub Organization used to add members to." Name="out_OrganizationName" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The name of the GitHub Organization used to add members to. This is the same as the batch name." Name="out_OrganizationName" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1685,2421</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1697,2421</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -112,12 +112,24 @@
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Initializing dispatcher sequence&quot;]" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetForm workflow" sap:VirtualizedContainerService.HintSize="514,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\GetForm.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_FormURL">[FormURL]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationName">[out_OrganizationName]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationBusiness">[BuseinessName]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_ContactEmail">[ContactEmail]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LocalPath">["C:\Users\"+ Environment.UserName + in_Config("InputFileRelativePath").ToString]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FormURL">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="FormURL" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationBusiness">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="BuseinessName" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ContactEmail">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ContactEmail" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LocalPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C:\Users\&quot;+ Environment.UserName + in_Config(&quot;InputFileRelativePath&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_BatchName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_OrganizationName" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Open new Edge Browser" sap:VirtualizedContainerService.HintSize="514,1257" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" OpenMode="Always" OutUiElement="[Browser]" Version="V1">
