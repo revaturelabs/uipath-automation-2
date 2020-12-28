@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Activity mc:Ignorable="sap sap2010" x:Class="GoogleFlowchart" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Credential used to sign user into Google account" Name="in_Credential" Type="InArgument(x:String)" />
@@ -203,7 +204,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="339,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;A user is already signed in&quot;]" />
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Google_SignOut workflow" sap:VirtualizedContainerService.HintSize="339,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\Google\Google_SignOut.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Google_SignOut workflow" sap:VirtualizedContainerService.HintSize="339,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\Web\Google\Google_SignOut.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[Browser]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
@@ -294,7 +295,7 @@
                                       <uix:TargetAnchorable BrowserURL="https://accounts.google.com/signin/v2/challenge/pwd?hl=en&amp;passive=true&amp;continue=https%3A%2F%2Fwww.google.com%2F&amp;ec=GAZAAQ&amp;flowName=GlifWebSignIn&amp;flowEntry=AddSession&amp;cid=1&amp;navigationDirection=forward&amp;TL=AM3QAYZvq8ufY3S0mlKuyS6Dm8lUmtH09vkQjx7sW6Jg8qua1ubo_lSDoeI4H9Lw" DesignTimeRectangle="752, 839, 79, 36" FriendlyName="'DIV'" FullSelectorArgument="&lt;webctrl aaname='Next' parentid='passwordNext' tag='BUTTON' type='button' /&gt;&lt;webctrl isleaf='1' parentid='passwordNext' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' isleaf='1' parentid='passwordNext' tag='DIV' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAA0CAYAAAD2QwTiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL3SURBVHhe7ZpNaxNRFIb9HS5d+AfcuvAviLhzU1y4k6ILP5YKUgQRQSoiGHBRv1pBpIq1YtEu/KqftNIKrSitKZFM0qSZyWRmjve945lm7FhMPEmxOQ+8pJN77yTz5Nw7U7jbSBFDZQqiMgVRmYKoTEFUpiAqUxCVKUhK5vtvPvXlSrTj+DJtP5rX/CHwA0/w1UwiEw0qsbXAV7PQRCZMZw3QbBx4YxKZWpXtBd6YRGZWR83fhVGZAmFUpkAYlSkQRmUKhFGZAmFUpkAYlSkQpmsy918q0vdSSEFIlJtcTbU9m6tTxYvo8ND/+V8Y03WZoFAJ6WDOSdokZfLnzOYbme2dCNN1mc5qSPVGRBOz9aRNZbYYvsg5c5EvF3xy/YjOjFZs2+8y95z9YWV7RjqomraRKZd2nly2YzB2erFBuwcKdOCKQ/ly/CONfvDID+IxzNCLWup7dCJM12WiYo7cLFOpFtJ8IbDimmVC2FNz3AiIxmc8OjZcpsnPdSvp+i8xEIv24deu7Qu5F8ar1HfVoTtvXHtuCL5t2vtvlNd9F+kwmyITx1aIWUJvvaqlZOLiV9yIpr74Viz6ogIXjHgEf+MHmFlq2OUCUiGU+/bUNOeLhBBUJqbnu69+IvP8WHXdVGUwHufB+NP34uleNOMPXVtba3tSJsLrX2jcscwTIyt2jcQU536ouoH7Fdo3GIvkH8JWpqluLAM9XZkcTHHQvGY+n69bwbhZ3X3r2lcc8xPA2LRnJeJ5Fe+hki9PxM+uey8WaakU2PM9Mv0Gn1RTn9eJMJsuE8+beO5kmXgPlYfKrJmqBXh98NGjXacKdO5h1d7lsTRAPM676AT2poMbG8ZDLKo7MsMff1qr8E6F6ZrMrRxGZQqEUZkCYVSmQBiVKRBGZQqEUZkCYVSmQBiVKRBGZQqESWTqxq32krlxS7cUtpfMLYW62bX1wFfmZleABphWqRsHfuCpWSRIyVT+DZUpiMoURGUKojIFUZmCqExBVKYYRD8B0ZsfXCAbpgsAAAAASUVORK5CYII=" InformativeScreenshot="f7a6d4956cd09e5f5466c56e69700fa7.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Sign in - Google Accounts' /&gt;" SearchSteps="FuzzySelector, Image" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
-                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Google_Check2FA workflow" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Components\Google\Google_Check2FA.xaml">
+                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Google_Check2FA workflow" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Components\Web\Google\Google_Check2FA.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
                                       <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[Browser]</InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
@@ -392,7 +393,7 @@
                               <av:PointCollection x:Key="ConnectorLocation">730,644.6 730,695.6</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Google\Google_Check2FA.xaml">
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Web\Google\Google_Check2FA.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
                               <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">[Browser]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>

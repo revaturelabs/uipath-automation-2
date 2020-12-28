@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1685,1684</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,1400.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetGoogleFormLink_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -71,21 +71,21 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequnce gets the url for a Google Form given the batch name. This assumes the Google Form title includes the batch name in it." DisplayName="Get Google Form Link" sap:VirtualizedContainerService.HintSize="556,1619" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequnce gets the url for a Google Form given the batch name. This assumes the Google Form title includes the batch name in it.&#xD;&#xA;&#xD;&#xA;Rethrows NodeNotFoundException if a Google form matching the batch name naming convention is not found." DisplayName="Get Google Form Link" sap:VirtualizedContainerService.HintSize="550.4,1296" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Extracting the Google Forms link&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser that is already open" sap:VirtualizedContainerService.HintSize="514,1354" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OpenMode="Never" Version="V1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="508.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Extracting the Google Forms link&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser that is already open" sap:VirtualizedContainerService.HintSize="508.8,978.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" OpenMode="Never" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="480,1138" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,761.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="Url" />
             </Sequence.Variables>
@@ -94,31 +94,31 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGoToUrl DisplayName="Go To Google Forms Home URL" sap:VirtualizedContainerService.HintSize="438,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="forms.google.com" />
-            <TryCatch sap2010:Annotation.AnnotationText="If an incorrect batch name is given and the Googel Form cannot be found, it throws a NodeNotFoundException. This exception is then rethrow to be handled in the main process." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,924" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <uix:NGoToUrl DisplayName="Go To Google Forms Home URL" sap:VirtualizedContainerService.HintSize="433.6,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="forms.google.com" />
+            <TryCatch sap2010:Annotation.AnnotationText="If an incorrect batch name is given and the Googel Form cannot be found, it throws a NodeNotFoundException. This exception is then rethrow to be handled in the main process." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="433.6,544.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,640" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,644" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NClick ClickType="Single" DisplayName="Click Form with Batch Name" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" Timeout="10">
+                  <uix:NClick ClickType="Single" DisplayName="Click Form with Batch Name" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" Timeout="10">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://docs.google.com/forms/u/0/" DesignTimeRectangle="198, 691, 182, 18" ElementType="Text" FriendlyName="'UiPath-2020-Batch Github'" FullSelectorArgument="[String.Format(&quot;&lt;webctrl isleaf='1' tag='DIV' aaname='*{0}*' /&gt;&quot;, in_BatchName)]" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' type='' isleaf='1' parentid=':39' tag='DIV' aaname='UiPath-2020-Batch Github Associate Information' check:text='UiPath-2020-Batch Github Associate Information' /&gt;" ImageBase64="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" InformativeScreenshot="124db43d55a2e5d66496a28405db9699.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Google Forms' /&gt;" SearchSteps="Selector" Text="UiPath-2020-Batch Github Associate Information" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DIV' /&gt;" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <uix:NClick ClickType="Single" DisplayName="Click Responses" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left">
+                  <uix:NClick ClickType="Single" DisplayName="Click Responses" sap:VirtualizedContainerService.HintSize="333.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://docs.google.com/forms/d/1Zbni8dF5zwQ1XRdwL2ru_coOg6LFPbiTGktXI1cXIVE/edit" DesignTimeRectangle="644, 190, 97, 20" FriendlyName="'Responses3'" FullSelectorArgument="&lt;webctrl aaname='Responses' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Responses' tag='DIV' type='' check:text='Responses3' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGUAAAAYCAYAAADjwDPQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASISURBVGhD7Vj/ZyNpGL8/rD9Ueno7v3Q4QhmWYZlaUpbG0XX2TpQrkaXSE11CWEIYQu7yQySWrY1QzQ8boRpWhpXsLqGEZQife56Zd5LJZGbSkBC38+GRvPN8ed88X9/JT4iwdYiCsoWIgrJBfPnyFX/nrvBUfYbdn3/Bzu6e9clrfs58P0RB2RAq//w7DUQQMZ/lvIiCsgGwo/2CEETewERBWTO4JS2rEC+xvLuVuYLSRtYj/OTXExRaI8GP8BjwrHD78LHEeg4WgqKmq7j90CJqQP89TgpxFLpCJMJS8BCfd7iC7IchxhMh8NCDfurm28R6DhaCktSHYk2Y9FBU9hC7aIsHEZZhoXXluzAnQ9TONVpruPo4Bowq4m4ZItZzsGJQxujrZziSJcuQt72Zd2VkVBkx3kiK4+VlCyPOkGEZSXr2V574T23dmJxAttqDaavaeGhTFqk42OeDSlBe5HDrHEfYyJYaczZm+4efDeMeKimP7W+Ct0x3BbD+HJ2/Re1terauGrTd4qhgchDSvqoovrDb11Xbdt1ATyC2T+VIzhw9DHGvv4Iy5XdRkPcQT1XRH44xuMkjKWsotikzhEPZGcfpMpps+zeFgichWRZe54PGSSZ+gmKV9q+XkX1GTtpPoPKZ+FMbFOw8nXHKP8Ptd+J3c5R9MjIVPpuBzpsEDrQ8OrQ9KFMrCQmxwzRqPWolwy4q3JrjF+gs010RXkfPkXKGmmHC/Jj35TsIHfRzmTghPmWZmu/ZawsmmimSTV3TNwO6SjoJ+jHGmEpWiDCEQ5MlVxVSdt6ey9iRc7in1YgCzg5uuh0xsQMde02VKmzM7W85U6KkoO9GCUcc5DdtDMZz9QfcXFACKCjeiTXj+zUyZC/zjmTDdFeE239uqlCBWKBuUND8ZRz4ty92BmVtLFHGtIinmepDz4UctYja5SmOD7mFSThKldFnJwvd7A0LzWAFYpeylb53XrvsuDB97mfD88y8q+LqVIPKbUhSkdHt9mjv4zqvi5x2HaS7Kvz2mJJCbZE7x+cGjn34DoJnCmWhwtnjrDmzqFJeVufdNvrUm94sRjcN3DtsszubR8J566iUwKBQi+rUu2TVhtnNQxVVZL4/oyQ5Qc199MkI/Z54EKK7KryOPs6V52fKZZv2MVBxyTjkIHTQ3+eo7zo9ndAvalYF2HOhgUpawxMOHM+FsR202OEr6PUWmnoaR7SO5+g+LZy3jpkSFBTzHTtegvpHyT4b3XZiNCes6/yEWivbkjRk9YZtW7Nt12j7UN0V4XX0TonarWmgllJoTbcvrpRv1/jTK0fkIDQoThvbeV7CwKoGuqVU0zTA6QeRrHWDqjvNkmA0kE2I29e+jGS6Yes5zqu0UBD8mOzTIh5z+wqqFMKgHnI2bq1pGuDC9kEijaaLHaq7Ahbf5ikQreFsxga8pwRciTcIP4f+T7H48vg4Cnh53CB+oKCs+W+WDeIHCsqa/5CMsC5Ef91vKdjRyyqG+d6AMKKgbBDcknhW8BB3AsSfvObn7pblRhSULUQUlK0D8B+Pi7AsSMeF1AAAAABJRU5ErkJggg==" InformativeScreenshot="4b8086d783979cc9c17c37baf6d134b0.png" ScopeSelectorArgument="[String.Format(&quot;&lt;html app='msedge.exe' title='{0}*Google Forms' /&gt;&quot;, in_BatchName)]" SearchSteps="Selector, FuzzySelector, Image" Text="Responses3" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='DIV' type='' /&gt;" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get  URL Attribute to extract the URL of the current page" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get  URL Attribute to extract the URL of the current page" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                     <ui:GetAttribute.Result>
                       <OutArgument x:TypeArguments="x:String">[Url]</OutArgument>
                     </ui:GetAttribute.Result>
@@ -136,10 +136,10 @@
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="uue:NodeNotFoundException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="uue:NodeNotFoundException" sap:VirtualizedContainerService.HintSize="400,320" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -147,14 +147,14 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="uue:NodeNotFoundException" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,249.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Fatal" Message="[&quot;The Google Form with the batch name: &quot; + in_BatchName + &quot; could not be found&quot;]" />
-                      <Rethrow sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Fatal" Message="[&quot;The Google Form with the batch name: &quot; + in_BatchName + &quot; could not be found&quot;]" />
+                      <Rethrow sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
                     </Sequence>
                   </ActivityAction>
                 </Catch>
