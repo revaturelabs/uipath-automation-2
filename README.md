@@ -70,8 +70,12 @@ Connect machine to Orchestrator. _For further instructions see documentation lin
 
 _(optional)_ In Orchestrator create an asset **'GoogleCredential'** and update with google account username and password
 
-_(optional)_ In Orchestrator create an asset **'GithubCredential'** and update with github username and password. _For further instructions see documentation link:_
+_(optional)_ In Orchestrator create an asset **'GithubCredential'** and update with github username and password. _For further instructions on Orchestrator assests see the following documentation link:_
 
 - https://docs.uipath.com/orchestrator/docs/managing-assets-in-studio
 
 ### Usage
+
+To run this automation from UiPath studio, click the Main.xaml to open the automation. Once the automation is open in UiPath you can run from Studio by selecting the run file option. To run the automation from Orchestrator publish the project with the publish option inside of UiPath Studio. _For futher instructions on managing processes from Orchestrator see the following documentation link:_
+
+- https://docs.uipath.com/orchestrator/docs/managing-processes
