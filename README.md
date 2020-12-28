@@ -27,6 +27,13 @@ In order to run project you will need the following environment(s):
 - UiPath Orchestrator
 - Microsoft Edge
 
+#### Microsoft Edge Setup
+
+- Make sure you have the UiPath Web automation extension enabled on your Microsoft Edge browser.
+- To do this simply navigate to the extensions page on Edge, click 'Get extensions for Microsoft Edge'
+- This will allow the automation to interact with the Edge browser
+- Enable popups on Microsoft edge
+
 #### Local Setup
 
 Run the following git command to download the project locally:
@@ -35,7 +42,7 @@ Run the following git command to download the project locally:
 git clone https://github.com/UiPath-Project3-1/uipath-automation-2.git
 ```
 
-For a fully unattened automation add a file at the following path:
+For a fully unattended automation add a file at the following path:
 
 ```
 ~\Documents\RevatureAutomationFiles\BatchOrganization.txt
@@ -61,19 +68,10 @@ Connect machine to Orchestrator. _For further instructions see documentation lin
 
 - https://docs.uipath.com/orchestrator/docs/managing-robots-modern-folders.
 
-In Orchestrator create an asset **'GithubCredential'** and update with github username and password. _For further instructions see documentation link:_
+- _(optional)_ In Orchestrator create an asset **'GithubCredential'** and update with github username and password. _For further instructions see documentation link:_
 
 - https://docs.uipath.com/orchestrator/docs/managing-assets-in-studio
 
-#### Uipath Extension for Edge
-
-- Make sure you have the UiPath Web automation extension enabled on your Microsoft Edge browser.
-- To do this simply navigate to the extensions page on Edge, click 'Get extensions for Microsoft Edge'
-- This will allow the automation to interact with the Edge browser
-- Enable popups on Microsoft edge
+- _(optional)_ In Orchestrator create an asset **'GoogleCredential'** and update with google account username and password. _For further instructions see documentation link:_
 
 ### Usage
-
-### Contributors
-
-### License
