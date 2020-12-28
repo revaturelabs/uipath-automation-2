@@ -2,7 +2,7 @@
 
 ### Project Overview
 
-This project is a UiPath implemented automation that automates the process of creating a GitHub organization for a new batch of associates at Revature. This automation ensures that this process is handled efficiently and accurately.
+This project is a UiPath implemented automation that creates a GitHub organization for a new batch of associates at Revature. This automation ensures that this process is handled efficiently and accurately.
 
 #### FlowChart
 
@@ -17,7 +17,7 @@ This project is a UiPath implemented automation that automates the process of cr
 ### Functionalities
 
 - Creates a new GitHub organization for a new Batch of associates
-- Uses Google Form responses to add members new organization
+- Uses preexisting Google Form responses to add members to the new organization
 
 ### Getting Started
 
@@ -33,9 +33,13 @@ Run the following git command to download the project locally:
 git clone https://github.com/UiPath-Project3-1/uipath-automation-2.git
 ```
 
-Connect your machine to Orchestrator. For further instructions see documentation link:
+Connect machine to Orchestrator. _For further instructions see documentation link:_
 
 - https://docs.uipath.com/orchestrator/docs/managing-robots-modern-folders.
+
+In Orchestrator create an asset 'GithubCredential' and update with github username and password. _For further instructions see documentation link:_
+
+- https://docs.uipath.com/orchestrator/docs/managing-assets-in-studio
 
 For a fully unattened automation add a file at the following path:
 
@@ -53,9 +57,7 @@ The file should contain the following information:
 }
 ```
 
-- this file automatically generated if it does not exists on machine via an attended form
-
-Create an orchestrator asset 'GithubCredential' and update with github username and password
+- this file automatically generated if it does not exist on your machine via an attended form
 
 ### Usage
 
