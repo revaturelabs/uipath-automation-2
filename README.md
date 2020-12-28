@@ -68,10 +68,10 @@ Connect machine to Orchestrator. _For further instructions see documentation lin
 
 - https://docs.uipath.com/orchestrator/docs/managing-robots-modern-folders.
 
-- _(optional)_ In Orchestrator create an asset **'GithubCredential'** and update with github username and password. _For further instructions see documentation link:_
+_(optional)_ In Orchestrator create an asset **'GithubCredential'** and update with github username and password. _For further instructions see documentation link:_
 
 - https://docs.uipath.com/orchestrator/docs/managing-assets-in-studio
 
-- _(optional)_ In Orchestrator create an asset **'GoogleCredential'** and update with google account username and password. _For further instructions see documentation link:_
+_(optional)_ In Orchestrator create an asset **'GoogleCredential'** and update with google account username and password. _For further instructions see documentation link:_
 
 ### Usage
