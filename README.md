@@ -6,7 +6,7 @@ This project is a UiPath implemented automation that automates the process of cr
 
 #### FlowChart
 
-![Documentation](/GithubOrganizations.png)
+![](Documentation/GithubOrganizations.png)
 
 ### Technologies Used
 
@@ -36,10 +36,6 @@ git clone https://github.com/UiPath-Project3-1/uipath-automation-2.git
 Connect your machine to Orchestrator. For further instructions see documentation link:
 
 - https://docs.uipath.com/orchestrator/docs/managing-robots-modern-folders.
-
-Add the following credential to your orchestrator assests:
-
--
 
 For a fully unattened automation add a file at the following path:
 
