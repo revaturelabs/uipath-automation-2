@@ -90,7 +90,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGoToUrl DisplayName="Go To Logout URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://accounts.google.com/Logout" />
+            <uix:NGoToUrl DelayAfter="2" DisplayName="Go To Logout URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://accounts.google.com/Logout" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
