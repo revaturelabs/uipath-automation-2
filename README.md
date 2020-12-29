@@ -42,10 +42,10 @@ Run the following git command to download the project locally:
 git clone https://github.com/UiPath-Project3-1/uipath-automation-2.git
 ```
 
-For a fully unattended automation add a `BatchOrganization.txt` file at the following path:
+For a fully unattended automation add a `BatchOrganizationInput.txt` file at the following path:
 
 ```
-~\Documents\RevatureAutomationFiles\BatchOrganization.txt
+~\Documents\RevatureAutomationFiles\BatchOrganizationInput.txt
 ```
 
 The file should contain the following information:
