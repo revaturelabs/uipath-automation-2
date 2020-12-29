@@ -3,14 +3,13 @@
     <x:Property sap2010:Annotation.AnnotationText="The URL of the google form used to collect GitHub usernames. Does not matter if it is from the Questions or Responses panel." Name="out_FormURL" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The name of the business or institution for the newly created organization." Name="out_OrganizationBusiness" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The email of the contact person for the newly created GitHub organization." Name="out_ContactEmail" Type="OutArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="The local path of the Batch Organization file used to read in all information to complete the process.&#xA;" Name="in_LocalPath" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="The config file used throughout the application." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property sap2010:Annotation.AnnotationText="The name of the organization you wish to add members to." Name="out_BatchName" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1025.6,1804</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1697,1988</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetForm_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -79,13 +78,15 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence asks the user for the GitHub organzation name and the Google Form URL with the list of GitHub usernames if information not contained in local path.&#xD;&#xA;&#xD;&#xA;Throws SystemException if the user dismisses the form and does not input data." DisplayName="GetForm URL + GitHub Org. Name" sap:VirtualizedContainerService.HintSize="1036,1699.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence asks the user for the GitHub organzation name and the Google Form URL with the list of GitHub usernames if information not contained in local path.&#xA;&#xA;Throws SystemException if the user dismisses the form and does not input data." DisplayName="GetForm URL + GitHub Org. Name" sap:VirtualizedContainerService.HintSize="1039,1883" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the form was dismissed without submission." Name="Dismissed" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The JSON string that contains the necessary information to complete the process unattended." Name="GitHubInfoText" />
       <Variable x:TypeArguments="njl:JObject" sap2010:Annotation.AnnotationText="The JSON Objectthat contains the necessary information to complete the process unattended." Name="JSONGitHubInfoObj" />
       <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="Set to true if the a file is found at the specific file address given by in_LocalPath." Name="IsValidPath" />
       <Variable x:TypeArguments="njl:JObject" Name="JSONObj" />
+      <Variable x:TypeArguments="x:String" Name="FilePath" />
+      <Variable x:TypeArguments="x:String" Name="DocumentsPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -93,19 +94,28 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="994.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Getting Org name and Form URL from user...&quot;]" />
-    <ui:PathExists DisplayName="Path Exists - Local path wilt GitHub Information" Exists="[isValidPath]" sap:VirtualizedContainerService.HintSize="994.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_LocalPath]" PathType="File" />
-    <If Condition="[IsValidPath]" DisplayName="If - local file path for GitHub create organization details is valid" sap:VirtualizedContainerService.HintSize="994.4,1283.2" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="997,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Getting Org name and Form URL from user...&quot;]" />
+    <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[DocumentsPath]" sap:VirtualizedContainerService.HintSize="997,61" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="MyDocuments" />
+    <Assign sap:VirtualizedContainerService.HintSize="997,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[FilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[DocumentsPath + in_Config("InputFileRelativePath").ToString + in_Config("FileName").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:PathExists DisplayName="Path Exists - Local path wilt GitHub Information" Exists="[isValidPath]" sap:VirtualizedContainerService.HintSize="997,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[FilePath]" PathType="File" />
+    <If Condition="[IsValidPath]" DisplayName="If - local file path for GitHub create organization details is valid" sap:VirtualizedContainerService.HintSize="997,1273" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Sequence DisplayName="Sequence - Get Github details from file" sap:VirtualizedContainerService.HintSize="425.6,608" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Sequence - Get Github details from file" sap:VirtualizedContainerService.HintSize="426,602" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadTextFile Content="[GitHubInfoText]" DisplayName="Read Text File - Local predefined path for file containing github information" FileName="[in_LocalPath]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+          <ui:ReadTextFile Content="[GitHubInfoText]" DisplayName="Read Text File - Local predefined path for file containing github information" FileName="[FilePath]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
           <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON - GitHub text from file " sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[JSONGitHubInfoObj]" JsonString="[GitHubInfoText]" />
-          <ui:MultipleAssign DisplayName="Multiple Assign - GitHub Organization Arguements" sap:VirtualizedContainerService.HintSize="384,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign - GitHub Organization Arguements" sap:VirtualizedContainerService.HintSize="384,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -135,11 +145,11 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:LogMessage DisplayName="Log Message - GitHub Org details complated" sap:VirtualizedContainerService.HintSize="384,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;GitHub organization information attained from file&quot;]" />
+          <ui:LogMessage DisplayName="Log Message - GitHub Org details complated" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;GitHub organization information attained from file&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="524.8,1133.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap:VirtualizedContainerService.HintSize="526,1125" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="JSONFormData" />
           </Sequence.Variables>
@@ -148,22 +158,22 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ufa:FormActivity FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" Dismissed="[Dismissed]" DisplayName="Create Form - Ask for URL and Org Name" FormFieldsOutputData="[JSONFormData]" FormHeight="500" FormSchema="%[{&quot;label&quot;:&quot;Batch Name (to be used as GitHub Organization name)&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true},&quot;key&quot;:&quot;BatchName&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;GitHub Organization Contact email&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true},&quot;key&quot;:&quot;ContactEmail&quot;,&quot;type&quot;:&quot;email&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true},{&quot;label&quot;:&quot;GitHub Organization Business or Institution&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;OrganizationBusiness&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;calculateServer&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="483.2,658.4" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+          <ufa:FormActivity FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" Dismissed="[Dismissed]" DisplayName="Create Form - Ask for URL and Org Name" FormFieldsOutputData="[JSONFormData]" FormHeight="500" FormSchema="%[{&quot;label&quot;:&quot;Batch Name (to be used as GitHub Organization name)&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true},&quot;key&quot;:&quot;BatchName&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;GitHub Organization Contact email&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true},&quot;key&quot;:&quot;ContactEmail&quot;,&quot;type&quot;:&quot;email&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true},{&quot;label&quot;:&quot;GitHub Organization Business or Institution&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;OrganizationBusiness&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;calculateServer&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="484,654" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
             <ufa:FormActivity.Body>
               <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,532" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,528" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON - Input to generated form" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[JSONObj]" JsonString="[JSONFormData]" />
-                  <ui:InvokeCode ContinueOnError="{x:Null}" Code="JSONObj.Property(&quot;submit&quot;).Remove()" DisplayName="Invoke code - Remove &quot;submit&quot; property from JSONObj" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                  <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON - Input to generated form" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[JSONObj]" JsonString="[JSONFormData]" />
+                  <ui:InvokeCode ContinueOnError="{x:Null}" Code="JSONObj.Property(&quot;submit&quot;).Remove()" DisplayName="Invoke code - Remove &quot;submit&quot; property from JSONObj" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                     <ui:InvokeCode.Arguments>
                       <InArgument x:TypeArguments="njl:JObject" x:Key="JSONObj">[JSONObj]</InArgument>
                     </ui:InvokeCode.Arguments>
                   </ui:InvokeCode>
-                  <ui:WriteTextFile DisplayName="Write Text File containing input from form" FileName="[in_LocalPath]" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[JSONObj.ToString(Newtonsoft.Json.Formatting.Indented)]" />
+                  <ui:WriteTextFile DisplayName="Write Text File containing input from form" FileName="[FilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[JSONObj.ToString(Newtonsoft.Json.Formatting.Indented)]" />
                 </Sequence>
               </ActivityAction>
             </ufa:FormActivity.Body>
@@ -179,12 +189,12 @@
               <OutArgument x:TypeArguments="x:String" x:Key="ContactEmail">[out_ContactEmail]</OutArgument>
             </ufa:FormActivity.FormFieldsCollection>
           </ufa:FormActivity>
-          <If Condition="[Dismissed]" DisplayName="If - The form was dismissed" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[Dismissed]" DisplayName="If - The form was dismissed" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Throw DisplayName="Throw System Exception" Exception="[new SystemException(&quot;The input form was not completed and the form URL was never received.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw DisplayName="Throw System Exception" Exception="[new SystemException(&quot;The input form was not completed and the form URL was never received.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </If.Then>
           </If>
-          <ui:LogMessage DisplayName="Log Message - Data from form read in" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;GitHub organization informaiton attained from form&quot;]" />
+          <ui:LogMessage DisplayName="Log Message - Data from form read in" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;GitHub organization informaiton attained from form&quot;]" />
         </Sequence>
       </If.Else>
     </If>
